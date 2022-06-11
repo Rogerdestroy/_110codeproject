@@ -51,12 +51,20 @@ def button_play():
   
     root.quit()
     root.destroy()
+
+def button_rest():
+    print('<<Rest Today>>')
+    global x #全域變數
+    x = 3
+  
+    root.quit()
+    root.destroy()
     
 def button_end():
     print('====================================================\n')
     print('<<The End>>')
     global x #全域變數
-    x = 3
+    x = 4
   
     root.quit()
     root.destroy()
@@ -93,11 +101,20 @@ def callbackFunc(event):
      
      
 # main 
+#第一個視窗
 root = tk.Tk()
 root.withdraw()
-messagebox.showinfo('Introduce', '這是一個關創業的模擬器')
+root.wm_attributes('-topmost',1) #至頂
+messagebox.showinfo('Introduce', '這是一個有關創業的模擬器')
     
 while True:
+    
+    '''
+    
+    遊戲狀況判斷
+    
+    '''
+    #表格
     day += 1
     print("Day: ",day, '\t', "財產: ", packet , '\t', "體力： ", power)
         
@@ -112,9 +129,11 @@ while True:
     #等待
     time.sleep(0.5)
     
+    #選擇事件視窗
     root = tk.Tk()
     root.title('Mine創業')
-    root.geometry('540x540')
+    root.geometry('540x540+500+200')
+    root.wm_attributes('-topmost',1)
     
     mylabel = tk.Label(root, text='第'+str(day)+'天, 要做什麼?',font=('Arial', 30))
     #mylabel = tk.Label(root, text='今天要做什麼?',font=('Arial', 25))
@@ -126,13 +145,16 @@ while True:
     
     '''    
 
-    mybutton = tk.Button(root, text='Work', height=5 , width=30, command=button_work , font=('Arial', 15))
+    mybutton = tk.Button(root, text='Work', height=4 , width=30, command=button_work , font=('Arial', 15))
     mybutton.pack()
     
-    mybutton = tk.Button(root, text='Play', height=5 , width=30, command=button_play, font=('Arial', 15))
+    mybutton = tk.Button(root, text='Play', height=4 , width=30, command=button_play, font=('Arial', 15))
     mybutton.pack()
-
-    mybutton = tk.Button(root, text='End Game', height=5 , width=30, command=button_end, font=('Arial', 15))
+    
+    mybutton = tk.Button(root, text='Rest', height=4 , width=30, command=button_rest, font=('Arial', 15))
+    mybutton.pack()
+    
+    mybutton = tk.Button(root, text='End Game', height=4 , width=30, command=button_end, font=('Arial', 15))
     mybutton.pack()
 
     root.mainloop()
@@ -142,11 +164,11 @@ while True:
     if x == 1: #開工
         print()
         
-    elif x == 2:  #休息
+    elif x == 2:  #玩遊戲
         root = tk.Tk()
         root.title('Game')
-        root.geometry('180x90')
-        
+        root.geometry('180x90+650+350')
+        root.wm_attributes('-topmost',1)
         #ttk.Label(root, text = "Choose A Game", background = 'cyan', foreground ="black") 
         
         #labelTop = tk.Label(root, text = "Choose A Game")
@@ -161,8 +183,11 @@ while True:
 
         root.mainloop()
         #print(comboExample.current(), comboExample.get())
-        
-    elif x == 3: #結束遊戲
+    
+    elif x == 3: #休息
+        print()
+    
+    elif x == 4: #結束遊戲
         break
     else:   #開工
         print()
@@ -172,6 +197,11 @@ while True:
     #clipVideo = VideoFileClip("car.gif")
     #clipVideo.write_gif("car.gif")
     
+    '''
+    
+    結束天數判斷
+    
+    '''
     
     #time+sys 輸出文字
     line_day = "***恭喜妳過了第"+str(day)+"天***"
