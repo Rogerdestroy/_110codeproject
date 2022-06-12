@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import messagebox
 import tkinter.ttk as ttk
 import wx
-
+   
 a, b, c, d = 10, 100, 1000, 10000  #sells price
 abuy, bbuy, cbuy, dbuy = 1, 1, 1, 1, #inport prise
 a_num, b_num, c_num, d_num = 0, 0, 0, 0 #Purchase quantity
@@ -20,6 +20,31 @@ packet = 10000 #財產
 day = 0
 power = 5 #體力
 x, y = 0, 0 #按鈕編號
+customer = 0
+
+class store(): 
+    #顧客數量
+    def customer(yert, day, weather, ):
+        print()
+    
+    #inventory_cost 存貨成本
+    def storehouse():   #存貨倉庫
+        print()
+    def interest():     #銀行利息
+        print()
+    #def 
+    
+    # ordering_cost 物品成本
+    def order_cost():   #物品成本
+         print()
+    def truck():        #運送成本 
+        print()
+    
+    #shortage_cost 短缺商譽損失
+    def compensation(): #賠償
+        print()
+    def ctmlose_shortage():  #顧客損失
+        print()
 
 
 class Control_: 
@@ -199,7 +224,7 @@ class Game_:
         game_WWGG = 0 #分數
         
         for i in range(3):
-        
+            print("第 "+str(i+1)+' 場遊戲 , 共 3 場')
             # 初始化棋盤為空
             theBoard = [' '] * 10
             # 玩家和電腦棋子型別的選擇
@@ -519,3 +544,29 @@ for x in line_day:
     time.sleep(0.2)
 '''
 print('\n')
+if power <= 0 or packet <= 0:
+    print(
+    '''
+    \ \   / /          | |
+     \ \_/ /__  _   _  | |       _____ ___
+      \   / _ \| | | | | |/ _ \ / ___// _ \ 
+       | | (_) | |_| | | | (_) (__  )/  __/
+       |_|\___/ \__,_| |_|\___/____/ \___/ you lose...
+    '''
+    )
+
+    #os._exit()
+else:
+    print()
+    
+print(
+'''
+  _____ __                __
+ /_  __/ /_  ____  ____  / /__  ____
+  / / / __ \/ __ \/ __ \/ // // ___/
+ / / / / / / /_/ / / / / , < (__  )
+/_/ /_/ /_/\__,_/_/ /_/_/|_|/____/ 
+'''
+)
+
+sys.exit(0)
