@@ -1,4 +1,5 @@
 import numpy as np
+from math import log
 import cv2
 #import matplotlib.pyplot as plt
 #import pandas as pd
@@ -20,11 +21,35 @@ packet = 10000 #財產
 day = 0
 power = 5 #體力
 x, y = 0, 0 #按鈕編號
-customer = 0
+cus = 0 #顧客
+customer = [] #顧客性質儲存
+year_c, month_c, day_c, week_c = 2000, 1, 1, 6
 
-class store(): 
+class Customers_:
+    def __init__(self, name, is_come, c_buy, d_buy):
+        self.name = name
+        self.is_come = is_come
+        #self.a_buy = a_buy
+        #self.b_buy = b_buy
+        self.c_buy = c_buy
+        self.s_buy = d_buy
+
+class Goods_:
+    def __init__(self, name):
+        self.name = name
+        #購買率、平率....
+
+class Store(): 
     #顧客數量
-    def customer(yert, day, weather, ):
+    def customer_n(cus,day):  #潛在客戶(知道有這間店的人)
+        if day > 50 or cus > 1000:
+            return cus +  random.randint(0,3)
+        elif day<30:
+            return cus +  random.randint(0, int(log(day+1, 2.2)))
+        else:
+            return cus +  random.randint(0, int(log(day+1, 2)))
+        
+    def customer_come(day, weather, ): #會進商店的顧客
         print()
     
     #inventory_cost 存貨成本
@@ -32,11 +57,13 @@ class store():
         print()
     def interest():     #銀行利息
         print()
+    
     #def 
     
     # ordering_cost 物品成本
     def order_cost():   #物品成本
-         print()
+        print()
+        
     def truck():        #運送成本 
         print()
     
@@ -57,8 +84,49 @@ class Control_:
         for x in line_todo:
              print(x, end='')
              sys.stdout.flush()
-             time.sleep(0.2)
-
+             time.sleep(0.15)
+                 
+    def clock():
+        global year_c, month_c, day_c, week_c
+        print(str(year_c)+'年 \t'+str(month_c)+'月\t'+str(day_c)+'日\t'+' 星期'+str(week_c))
+        
+        #時間計算
+        leap_year = 0
+        m31 = ['1', '3', '5', '7', '8', '10', '12']
+        m30 = ['4', '6', '9', '11']
+        if year_c % 4 == 0 and year_c % 100 != 0:
+            leap_year = 1
+        elif year_c % 4 == 0 and year_c % 100 == 0 and year_c % 400==0:
+            leap_year = 1
+        else:
+            leap_year = 0
+        
+        if week_c == 7:
+            week_c = 1
+        else:
+            week_c += 1
+        
+        day_c += 1
+        
+        
+        if day_c > 28 and  leap_year == 0 and month_c == 2:
+            month_c += 1
+            day_c = 1
+        elif day_c > 29 and  leap_year == 1 and month_c == 2:
+            month_c += 1
+            day_c = 1
+        elif day_c>30 and str(month_c) in m30:
+            month_c += 1
+            day_c = 1
+        elif day_c>31 and str(month_c) in m31:
+            if month_c == 12:
+                month_c = 1
+                day_c = 1
+                year_c += 1
+            else:
+                month_c += 1
+                day_c = 1
+        
 class game_1():
       
     def drawBoard_():
@@ -427,7 +495,31 @@ if __name__ == "__main__":
         if power <= 0 or packet <= 0:
             break
         
+        #來客數
+        tmp = cus
+        cus = Store.customer_n(cus, day)
+        #print(cus)
+        
+        #顧客性質
+        for i in range(tmp,cus):
+            data1 = [0,0,0,0,0.001]
+            data2 = [0,0,0,0,0,0,0,0,0,0.001]
+            
+            customer[i] = Customers_(i, 
+                                   True if random.uniform(0,5) != 0 else False,
+                                   random.choice(data1),
+                                   random.choice(data2))
+        del tmp  
+
+        for i in range(cus):
+            print(customer[i].num)
+            print(customer[i].is_come)
+            print(customer[i].c_buy)
+            print(customer[i].d_buy)
+
         #表格
+        Control_.clock()
+        
         day += 1
         print("Day: ",day, '\t', "財產: ", packet , '\t', "體力： ", power)
             
