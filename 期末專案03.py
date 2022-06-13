@@ -141,13 +141,20 @@ class Control_:
     
     def tb_(a, b, c):
         pass
+
 class Button_work():
-    def ____():
-        pass
+   
+    def createNewWindow():
+        newWindow = tk.Toplevel(root)
+        labelExample = tk.Label(newWindow, text = "New Window")
+        buttonExample = tk.Button(newWindow, text = "New Window button")
     
-class Work_():
-    def af999():
-        pass   
+        labelExample.pack()
+        buttonExample.pack()
+    
+def Work_():
+    #Button_work.createNewWindow()
+    
     
 class game_1():
       
@@ -593,7 +600,7 @@ if __name__ == "__main__":
         #回來了
         #print(x)
         if x == 1: #開工
-            print()
+            Work_()
             
         elif x == 2:  #玩遊戲
             root = tk.Tk()
@@ -624,8 +631,9 @@ if __name__ == "__main__":
             
         elif x == 4: #結束遊戲
             break
+        
         else:   #開工
-            print()
+            Work_()
         
         x = 0
         
