@@ -23,11 +23,11 @@ day = 0
 power = 5 #體力
 x, y = 0, 0 #按鈕編號
 cus = 0 #顧客
-customer = [] #顧客性質儲存
+customer = {} #顧客性質儲存
 year_c, month_c, day_c, week_c = 2000, 1, 1, 6
-g_tb = ["Goods"]
-p_tb = ["Price"]
-c_tb = ["Count"]
+#g_tb = ['Goods','Pen','Food','Hat','Jewelry']
+p_tb = ["Price",0,0,0,0]
+c_tb = ["Count",0,0,0,0]
 
 class Customers_:
     def __init__(self, name, is_come, c_buy, d_buy):
@@ -36,7 +36,7 @@ class Customers_:
         #self.a_buy = a_buy
         #self.b_buy = b_buy
         self.c_buy = c_buy
-        self.s_buy = d_buy
+        self.d_buy = d_buy
 
 class Goods_:
     def __init__(self, name, num, in_prise, willbuy, frequency, alternatives):
@@ -154,7 +154,7 @@ class Button_work():
     
 def Work_():
     #Button_work.createNewWindow()
-    
+    pass
     
 class game_1():
       
@@ -536,17 +536,21 @@ if __name__ == "__main__":
             data2 = [0,0,0,0,0,0,0,0,0,0.001]
             
             customer[i] = Customers_(i, 
-                                   True if random.uniform(0,5) != 0 else False,
+                                   #True if random.uniform(0,5) != 0 else False
+                                   bool(int(random.uniform(0,3))),
                                    random.choice(data1),
                                    random.choice(data2))
+            del data1, data2
         del tmp  
-
+        
+        '''
         for i in range(cus):
-            print(customer[i].num)
+            print(customer[i].name)
             print(customer[i].is_come)
             print(customer[i].c_buy)
             print(customer[i].d_buy)
-
+        '''
+        
         #日期
         Control_.clock()
         
@@ -554,11 +558,14 @@ if __name__ == "__main__":
         day += 1
         print("Day: ",day, '\t', "財產: ", packet , '\t', "體力： ", power)
         
-        
+        #g_tb = ["Goods"]
+        #p_tb = ["Price"]
+        #c_tb = ["Count"]
+
         tb1 = pt.PrettyTable()
-        tb1.field_names = ["Goods", "A", "B", "C", "D"]
-        tb1.add_row(["Price", a, b, c, d])
-        tb1.add_row(["Count", a_num, b_num, c_num, d_num])
+        tb1.field_names = ['Goods','Pen','Food','Hat','Jewelry']
+        tb1.add_row(p_tb)
+        tb1.add_row(c_tb)
         tb1.set_style(pt.DEFAULT)
         print(tb1)
         
