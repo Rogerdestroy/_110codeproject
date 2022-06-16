@@ -405,14 +405,14 @@ class Game_:
                     # 如果玩家獲勝,標誌位變為False
                     if game_1.isWinner(theBoard, playerLetter) :
                         game_1.drawBoard(theBoard)
-                        print("You win ! 體力+2")
+                        print("You win !")
                         game_WWGG += 1
                         game_1.gameIsPlaying = False
                     # 否則則判斷棋盤是否已滿
                     else :
                         if game_1.isBoardFull(theBoard) :
                             game_1.drawBoard(theBoard)
-                            print("Tie ! 體力+1")
+                            print("Tie !1")
                             game_WWGG += 0.5
                             break
                         # 若棋盤未滿,且玩家已落子,則下一次落到計算機落子
@@ -427,7 +427,7 @@ class Game_:
                     # 如果電腦落子獲勝,則遊戲結束
                     if game_1.isWinner(theBoard, computerLetter) :
                         game_1.drawBoard(theBoard)
-                        print("You lose ! 體力-1")
+                        print("You lose !")
                         game_1.gameIsPlaying = False
                     else :
                         if game_1.isBoardFull(theBoard) :
@@ -442,13 +442,14 @@ class Game_:
             #    break
         global power
         if game_WWGG >= 2:
-            
+            print('體力增加!!!')
             power += 2
-        elif game_WWGG == 1.5:
             
+        elif game_WWGG == 1.5:
+            print('體力增加!!!')
             power += 1
         elif game_WWGG < 1.5:
-            
+            print('你也太爛...')
             power -= 1
             
     #剪刀石頭布
@@ -589,13 +590,7 @@ if __name__ == "__main__":
     messagebox.showinfo('Introduce', '這是一個有關創業的模擬器')
     
     #商品性質 首次設定
-   '''     j=0
-        for i in ['Pen','Food','Hat','Jewelry']:
-            goods[j] = Goods_(j,0,)
-        
-        
-        del j'''
-        
+       
         
     while True:
         
