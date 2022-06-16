@@ -10,5 +10,8 @@ class 設定
 表格宣告 + append
 
 
-6.14
+6.16
+goods 的 class 宣告
+(進貨價格等)
+
 
