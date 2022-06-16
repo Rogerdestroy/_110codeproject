@@ -14,9 +14,9 @@ from tkinter import messagebox
 import tkinter.ttk as ttk
 #import wx
    
-a, b, c, d = 10, 100, 1000, 10000  #sells price
-abuy, bbuy, cbuy, dbuy = 1, 1, 1, 1, #import prise
-a_num, b_num, c_num, d_num = 0, 0, 0, 0 #Purchase quantity
+#a, b, c, d = 10, 100, 1000, 10000  #sells price
+#abuy, bbuy, cbuy, dbuy = 1, 1, 1, 1, #import prise
+#a_num, b_num, c_num, d_num = 0, 0, 0, 0 #Purchase quantity
 
 packet = 10000 #財產 
 day = 0
@@ -33,8 +33,8 @@ class Customers_:
     def __init__(self, name, is_come, c_buy, d_buy):
         self.name = name
         self.is_come = is_come
-        #self.a_buy = a_buy
-        #self.b_buy = b_buy
+        self.a_buy = 1
+        self.b_buy = 1
         self.c_buy = c_buy
         self.d_buy = d_buy
 
@@ -59,33 +59,33 @@ class Store():
             return cus +  random.randint(0, int(log(day+1, 2)))
         
     def customer_come(day, weather, ): #會進商店的顧客
-        print()
+        pass
     
     #inventory_cost 存貨成本
     def storehouse():   #存貨倉庫
-        print()
+        pass
     def interest():     #銀行利息
-        print()
+        pass
     
     #def 
     
     # ordering_cost 物品成本
     def order_cost():   #物品成本
-        print()
+        pass
         
     def truck():        #運送成本 
-        print()
+        pass
     
     #shortage_cost 短缺商譽損失
     def compensation(): #賠償
-        print()
+        pass
     def ctmlose_shortage():  #顧客損失
-        print()
-
+        pass
 
 class Control_: 
     
     def exit_tk():
+        global root
         root.quit()
         root.destroy()
         
@@ -97,7 +97,21 @@ class Control_:
                  
     def clock():
         global year_c, month_c, day_c, week_c
-        print(str(year_c)+'年 \t'+str(month_c)+'月\t'+str(day_c)+'日\t'+' 星期'+str(week_c))
+        print(str(year_c)+'年 \t'+str(month_c)+'月\t'+str(day_c)+'日\t',end='')#+' 星期'+str(week_c)
+        if week_c == 1:
+            print(' 星期一')
+        elif week_c == 2:
+            print(' 星期二')
+        elif week_c == 3:
+            print(' 星期三')
+        elif week_c == 4:
+            print(' 星期四')
+        elif week_c == 5:
+            print(' 星期五')
+        elif week_c == 6:
+            print(' 星期六')
+        elif week_c == 7:
+            print(' 星期天')
         
         #時間計算
         leap_year = 0
@@ -141,20 +155,60 @@ class Control_:
     
     def tb_(a, b, c):
         pass
-
+'''
 class Button_work():
    
-    def createNewWindow():
-        newWindow = tk.Toplevel(root)
-        labelExample = tk.Label(newWindow, text = "New Window")
-        buttonExample = tk.Button(newWindow, text = "New Window button")
+    def button_AddGoods():
+        what_goods = input('你要進貨的商品是？')
+        
+        del what_goods
+        root.mainloop()
+        root.quit()
+        root.destroy()
+        sleep(1)
+        Work_()
+        
     
-        labelExample.pack()
-        buttonExample.pack()
+    def button_changePrise():
+        what_goods = input('你要變更價錢的商品是？')
+        
+        del what_goods
+        root.mainloop()
+        root.quit()
+        root.destroy()
+        sleep(1)
+        Work_()
+        
     
+    def button_break():
+        root.mainloop()
+        root.quit()
+        root.destroy()
+        return 
+  
 def Work_():
     #Button_work.createNewWindow()
-    pass
+    root = tk.Tk()
+    root.title('Worh Day')
+    root.geometry('540x375+350+180')
+    root.wm_attributes('-topmost',1)
+    
+    mylabel = tk.Label(root, text='今天要做什麼?',font=('Arial', 30))
+    mylabel.pack()
+
+
+    mybutton = tk.Button(root, text='進貨', height=3 , width=30, command=Button_work.button_AddGoods , font=('Arial', 15))
+    mybutton.pack()
+    
+    mybutton = tk.Button(root, text='更改售價', height=3 , width=30, command=Button_work.button_changePrise, font=('Arial', 15))
+    mybutton.pack()
+    
+    mybutton = tk.Button(root, text='結束一天', height=3 , width=30, command=return, font=('Arial', 15))
+    mybutton.pack()
+
+    
+    root.mainloop()
+'''
     
 class game_1():
       
@@ -351,14 +405,14 @@ class Game_:
                     # 如果玩家獲勝,標誌位變為False
                     if game_1.isWinner(theBoard, playerLetter) :
                         game_1.drawBoard(theBoard)
-                        print("You win !")
+                        print("You win ! 體力+2")
                         game_WWGG += 1
                         game_1.gameIsPlaying = False
                     # 否則則判斷棋盤是否已滿
                     else :
                         if game_1.isBoardFull(theBoard) :
                             game_1.drawBoard(theBoard)
-                            print("Tie")
+                            print("Tie ! 體力+1")
                             game_WWGG += 0.5
                             break
                         # 若棋盤未滿,且玩家已落子,則下一次落到計算機落子
@@ -373,7 +427,7 @@ class Game_:
                     # 如果電腦落子獲勝,則遊戲結束
                     if game_1.isWinner(theBoard, computerLetter) :
                         game_1.drawBoard(theBoard)
-                        print("You lose !")
+                        print("You lose ! 體力-1")
                         game_1.gameIsPlaying = False
                     else :
                         if game_1.isBoardFull(theBoard) :
@@ -446,6 +500,25 @@ class button_main():
       
         Control_.exit_tk()
 
+# work button
+def callbackWork(event):
+     country = event.widget.get()
+     Control_.exit_tk()
+     
+     if country == '進貨':
+         print('進貨~  剩餘財產為：'+str(packet)+'元')
+         for i in ['Pen','Food','Hat','Jewelry']:
+             ppp = 0
+             ppp = int(input(i + '進貨數量？'))
+             
+     elif country == '更改價格':
+         print('更改價格~')
+         
+     elif country == '結束一天':
+         global y
+         y = 1
+         #print(y)
+     
 # play button
 def callbackFunc(event):
      country = event.widget.get()
@@ -468,18 +541,18 @@ def callbackFunc(event):
      #print('\n')
     
      
-     global y #全域變數
+     #global y #全域變數
      if country == 'Game_1':
-         y = 1
+         #y = 1
          Game_.game_1()
      elif country == 'Game_2':
-         y = 2
+         #y = 2
          Game_.game_2()
      elif country == 'Game_3':
-         y = 3
+         #y = 3
          Game_.game_3()
      elif country == 'Game_4':
-         y = 4
+         #y = 4
          Game_.game_4()
 
 class Draw_:
@@ -514,14 +587,19 @@ if __name__ == "__main__":
     root.withdraw()
     root.wm_attributes('-topmost',1) #至頂
     messagebox.showinfo('Introduce', '這是一個有關創業的模擬器')
+    
+    #商品性質 首次設定
+   '''     j=0
+        for i in ['Pen','Food','Hat','Jewelry']:
+            goods[j] = Goods_(j,0,)
+        
+        
+        del j'''
+        
         
     while True:
         
-        '''
-        
-        遊戲狀況判斷
-        
-        '''
+        '''遊戲狀況判斷'''        
         if power <= 0 or packet <= 0:
             break
         
@@ -542,15 +620,12 @@ if __name__ == "__main__":
                                    random.choice(data2))
             del data1, data2
         del tmp  
-        
-        '''
-        for i in range(cus):
+        '''for i in range(cus):
             print(customer[i].name)
             print(customer[i].is_come)
             print(customer[i].c_buy)
-            print(customer[i].d_buy)
-        '''
-        
+            print(customer[i].d_buy)'''
+            
         #日期
         Control_.clock()
         
@@ -606,43 +681,67 @@ if __name__ == "__main__":
         
         #回來了
         #print(x)
-        if x == 1: #開工
-            Work_()
-            
-        elif x == 2:  #玩遊戲
-            root = tk.Tk()
-            root.title('Game')
-            root.geometry('180x90+650+350')
-            root.wm_attributes('-topmost',1)
-            #ttk.Label(root, text = "Choose A Game", background = 'cyan', foreground ="black") 
-            
-            #labelTop = tk.Label(root, text = "Choose A Game")
-            mycombobox = ttk.Combobox(root)
-            mycombobox['values'] = ['Game_1','Game_2','Game_3','Game_4']
-            mycombobox.pack(pady=30)
-            mycombobox.current(0)
-            
-            mycombobox.grid(column = 1, row = 5) 
-            mycombobox.current()
-            mycombobox.bind("<<ComboboxSelected>>", callbackFunc)
-    
-            root.mainloop()
-            #print(comboExample.current(), comboExample.get())
+        while True:    
+            if x == 1: #開工
+                root = tk.Tk()
+                root.title('Work')
+                root.geometry('180x90+650+350')
+                root.wm_attributes('-topmost',1)
+                #ttk.Label(root, text = "Choose A Game", background = 'cyan', foreground ="black") 
+                
+                #labelTop = tk.Label(root, text = "Choose A Game")
+                mycombobox = ttk.Combobox(root)
+                mycombobox['values'] = ['進貨','更改價格','結束一天']
+                mycombobox.pack(pady=40)
+                mycombobox.current(0)
+                
+                mycombobox.grid(column = 1, row = 5) 
+                mycombobox.current()
+                mycombobox.bind("<<ComboboxSelected>>", callbackWork)
         
-        elif x == 3: #休息
-            
-            Control_.print_one('又是耍廢的一天呢~~~\n')
-            #print('又是耍廢的一天呢~~~')
-            #print('\n')
-            Draw_.draw_random()
-            
-        elif x == 4: #結束遊戲
-            break
+                root.mainloop()
+                
+                if y == 0:
+                    continue
+                elif y == 1:
+                    break
+                
+            elif x == 2:  #玩遊戲
+                root = tk.Tk()
+                root.title('Game')
+                root.geometry('180x90+650+350')
+                root.wm_attributes('-topmost',1)
+                #ttk.Label(root, text = "Choose A Game", background = 'cyan', foreground ="black") 
+                
+                #labelTop = tk.Label(root, text = "Choose A Game")
+                mycombobox = ttk.Combobox(root)
+                mycombobox['values'] = ['Game_1','Game_2','Game_3','Game_4']
+                mycombobox.pack(pady=30)
+                mycombobox.current(0)
+                
+                mycombobox.grid(column = 1, row = 5) 
+                mycombobox.current()
+                mycombobox.bind("<<ComboboxSelected>>", callbackFunc)
         
-        else:   #開工
-            Work_()
+                root.mainloop()
+                #print(comboExample.current(), comboExample.get())
+                
+                break
+            elif x == 3: #休息
+                
+                Control_.print_one('又是耍廢的一天呢~~~\n')
+                #print('又是耍廢的一天呢~~~')
+                #print('\n')
+                Draw_.draw_random()
+                break
+                
+            elif x == 4: 
+                break
         
+        if x == 4: #結束遊戲
+                break
         x = 0
+        y = 0 
         
         #clipVideo = VideoFileClip("car.gif")
         #clipVideo.write_gif("car.gif")
