@@ -452,11 +452,45 @@ class Game_:
             print('你也太爛...')
             power -= 1
             
-    #剪刀石頭布
+    #幾A幾B
     def game_2():
-        print('麻煩請玩遊戲 1') #random???
-        Control_.print_one('更換遊戲中.......\n')
-        Game_.game_1()
+        print("\nWelcome to 幾A幾B !!!")
+        ti = 0
+        answer=random.sample('1234567890',4)
+        print (answer)
+        while True:
+            num=input("輸入4個不同數字:")
+            ti += 1
+            print (num)
+            z = list(num)
+            print (z)
+            a=0
+            for i in range(4):
+                if answer[i] is z[i]:
+                    a=a+1
+            b=4-len(set(answer)-set(z))-a
+            print(a,"A", b, "B")
+            if a == 4:
+                global power
+                if ti >8:
+                    print('你好爛... 共猜了'+str(ti)+'次')
+                    power -= 1
+                elif ti<=8 and ti>4:
+                    print('不錯~ 共猜了'+str(ti)+'次')
+                    power += 1
+                elif ti<=4 and ti>0:
+                    print('超級強!  共猜了'+str(ti)+'次')
+                    power += 2
+                del a,b,answer,z,num,ti
+                break
+            
+            elif str(num) == 'sos':
+                print('退出遊戲...')
+                #global power
+                power -= 1
+                break
+                
+        #Game_.game_1()
     #貪吃蛇
     def game_3():
         print('麻煩請玩遊戲 1') #random???
@@ -646,7 +680,7 @@ if __name__ == "__main__":
         
         #選擇事件視窗
         root = tk.Tk()
-        root.title('Mine創業')
+        root.title('Mini創業')
         root.geometry('540x540+350+180')
         root.wm_attributes('-topmost',1)
         
