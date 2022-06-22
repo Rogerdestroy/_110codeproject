@@ -1,6 +1,6 @@
 ### _110codeproject
 ### 高師大大一程式設計課期末專案
-# **請下載" 期末專案03.py " 檔案**
+# **暫停更新(請下載" 期末專案03.py " 檔案)**
 use Python：Anaconda  conda 4.13.0   
 Python 3.6.13   
 IDE：spyder   
